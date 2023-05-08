@@ -33,13 +33,21 @@ LOCAL_APPS = [
 ]
 
 THIRD_APPS = [
+    'corsheaders',
     'rest_framework',
-    'simple_history'
+    'rest_framework.authtoken',
+    'simple_history',
+    'drf_yasg'
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
 
+SWAGGER_SETTINGS = {
+    'DOC_EXPANSION': 'none'
+}
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -102,7 +110,13 @@ USE_TZ = True
 
 AUTH_USER_MODEL = 'users.User'
 
-AUTH_EMOTION_DETECTION_MODEL = ''
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
+# CORS_ORIGIN_WHITELIST = [
+#     "http://localhost:5173",
+# ]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
