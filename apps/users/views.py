@@ -50,9 +50,8 @@ class Login(ObtainAuthToken):
             else:
                 return Response({'error': 'Este usuario no puede iniciar sesión.'}, status =  status.HTTP_401_UNAUTHORIZED)
         else:
-            return Response({'error': 'Nombre de usuario o contraseña incorrectos.'}, status =  status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'Usuario o contraseña incorrectos.'}, status =  status.HTTP_400_BAD_REQUEST)
         
-        return Response({'mensaje': 'Hola desde response'}, status =  status.HTTP_200_OK)
     
 class Logout(APIView):
 

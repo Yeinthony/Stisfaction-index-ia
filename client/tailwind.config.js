@@ -11,7 +11,7 @@ export default {
       'blue-dark': '#5F9EC1',
       'green-light': '#7DD3FC',
       'white-custon': '#E2E8F0',
-      'mostaza': '#F2A413',
+      'red-custon': '#5C0000',
       'gray-dark': '#0E1629',
       'gray': '#1E293B',
       'gray-light': '#283447',
