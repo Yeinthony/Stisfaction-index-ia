@@ -32,7 +32,7 @@ export function Sidebar(){
                                 <span className="flex-1 ml-3 whitespace-nowrap">opciones</span>
                             </a>
                         </li>
-                        <li>
+                        <li className="botton-0">
                             <Link onClick={logout} className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
                                 <IoLogOutOutline className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                                 <span className="flex-1 ml-3 whitespace-nowrap">Salir</span>

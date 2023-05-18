@@ -1,6 +1,12 @@
+import { Link } from "react-router-dom";
 import user from "../assets/img/users/usuario.png";
+import useUser from "../hooks/useUser";
 
 export function Navbar(){
+
+    const name = `${localStorage.getItem('name')} ${localStorage.getItem('last_name')}`;
+    const email = localStorage.getItem('email');
+    const {logout, isLogged} = useUser();
 
     return (
         <div>        
@@ -14,8 +20,8 @@ export function Navbar(){
                                     <path id="sidebarPath" clipRule="evenodd" fillRule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                                 </svg>
                             </button>
-                            <a href="https://flowbite.com" className="flex ml-2 md:mr-24">
-                                <span className="self-center text-white-custon text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Emotion.ia</span>
+                            <a href="/home" className="flex ml-2 hover:text-blue md:mr-24">
+                                <span className="self-center text-white-custon hover:text-blue text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Emotion.ia</span>
                             </a>
                         </div>
                         <div className="flex items-center">
@@ -29,10 +35,10 @@ export function Navbar(){
                                 <div className="hidden absolute top-9 right-0 z-50 my-4 text-base list-none bg-gray divide-y divide-gray-light rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
                                     <div className="px-4 py-3" role="none">
                                         <p className="text-sm text-white dark:text-white" role="none">
-                                            Neil Sims
+                                            {name}
                                         </p>
                                         <p className="text-sm font-medium text-white-custon  truncate dark:text-gray-300" role="none">
-                                            neil.sims@flowbite.com
+                                            {email}
                                         </p>
                                     </div>
                                     <ul className="py-1" role="none">
@@ -43,7 +49,7 @@ export function Navbar(){
                                             <a href="#" className="block px-4 py-2 text-sm text-white-custon  hover:bg-gray-light dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Opciones</a>
                                         </li>
                                         <li>
-                                            <a href="#" className="block px-4 py-2 text-sm text-white-custon hover:bg-gray-light dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Cerrar sesión</a>
+                                            <Link onClick={logout} className="block px-4 py-2 text-sm text-white-custon hover:bg-gray-light dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Cerrar sesión</Link>
                                         </li>
                                     </ul>
                                 </div>

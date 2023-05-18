@@ -40,6 +40,8 @@ export default function useUser() {
 
             setState({loading: false, error:{err: false, message: ''}});
 
+            sessionStorage.setItem('token', res.data.token);
+
             // set user info
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('username', res.data.user.username);
@@ -51,15 +53,20 @@ export default function useUser() {
 
         }else{
             setState({loading: false, error:{err: true, message: res.data.error}});
+            sessionStorage.removeItem('token');
         }
 
     }, [setToken]);
 
     const logout =  useCallback(async () => {
+        const token = localStorage.getItem('token')
+        console.log(token)
         const res = await logoutUser(token);
         console.log(res.data)
         if ( res.status === 200 ||  res.status === 201 ){
 
+            sessionStorage.removeItem('token');
+            localStorage.clear();
             setToken(null);
 
         }else{
