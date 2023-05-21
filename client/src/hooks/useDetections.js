@@ -4,7 +4,7 @@ import * as faceApi from 'face-api.js';
 export default function useDetections(videoWidth, videoHeight, videoRef, canvasRef){
 
     const loadModels = async () => {
-        const MODEL_URL = `../../public/models`;
+        const MODEL_URL = `/models`;
         Promise.all([
             faceApi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
             faceApi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
