@@ -13,7 +13,7 @@ import { StatisticsWeek } from './pages/statistics/StatisticsWeek';
 //Others
 import { UserContextProvider } from './context/userContext';
 import { StatisticsMonth } from './pages/statistics/StatisticsMonth';
-import { StatisticsYear } from './pages/statistics/StatistisYear';
+import { StatisticsYear } from './pages/statistics/StatisticsYear';
 
 
 

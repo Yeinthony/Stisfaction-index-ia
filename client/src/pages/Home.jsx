@@ -52,7 +52,7 @@ export function Home() {
             <div className="p-4 sm:ml-64 bg-white-custon">
                 <div className="p-4 rounded-lg dark:border-gray-700 mt-14">
                    <div className="flex justify-center">
-                        <div className='flex relative w-8/12 h-94 bg-white-custon-light border border-gray-200 rounded-lg shadow'>
+                        <div className='flex relative overflow-hidden w-8/12 h-94 bg-white-custon-light border border-gray-200 rounded-lg shadow'>
                             <video
                                 className='absolute z-10 w-full'
                                 ref={videoRef}

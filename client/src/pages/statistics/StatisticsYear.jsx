@@ -21,6 +21,7 @@ export function StatisticsYear() {
 
     const daysMonth = DateTime.local(today.getFullYear(), today.getMonth()).daysInMonth;
 
+    //Load days in the month
     for (let i = -1; i < daysMonth; i++) { daysInTheMonth.push(i+2) }
 
     return (

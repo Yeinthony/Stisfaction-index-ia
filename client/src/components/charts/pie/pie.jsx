@@ -7,11 +7,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export function PieChart({title, labels, dataset}) {
-
-    console.log(title);
-    console.log(labels);
-    console.log(dataset);
-
+  
     const options = {
         responsive: true,
         plugins: {
