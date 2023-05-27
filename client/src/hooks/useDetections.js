@@ -1,45 +1,57 @@
 //Dependencies
 import * as faceApi from 'face-api.js';
 
-export default function useDetections(videoWidth, videoHeight, videoRef, canvasRef){
+export default function useDetections(videoRef, canvasRef){
 
     const loadModels = async () => {
         const MODEL_URL = `/models`;
-        Promise.all([
-            faceApi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
-            faceApi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
-            faceApi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
-            faceApi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
-            faceApi.nets.ageGenderNet.loadFromUri(MODEL_URL),
-            faceApi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL),
-        ]).then(async () => {
-            try {
-                videoRef.current.srcObject = await navigator.mediaDevices.getUserMedia({
-                    audio: false,
-                    video: {
-                        width: videoWidth,
-                        height: videoHeight,
-                    },
-                });
-            } catch (err) {
-                console.error(err);
-            }
-        }).catch((err) => console.log(err));
+        
+        try {
+
+            await faceApi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
+            await faceApi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
+            await faceApi.nets.faceRecognitionNet.loadFromUri(MODEL_URL);
+            await faceApi.nets.faceExpressionNet.loadFromUri(MODEL_URL);
+            await faceApi.nets.ageGenderNet.loadFromUri(MODEL_URL);
+            await faceApi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL);
+
+            return {success: true};
+
+        } catch (error) {
+            
+            return {success: false, err: error}
+
+        }
     };
+
+    const startVideo = async () => {
+        videoRef.current.srcObject = await navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: {}
+        });
+    }
+
+    const stopVideo = async () => {
+        videoRef.current.srcObject = await navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: {}
+        }).then(MediaStream => {
+            const stream = MediaStream;
+            const tracks = stream.getTracks();
+
+            tracks[0].stop;
+        });
+    }
 
     const handleVideoOnPlay = () => {
 
         setInterval(async () => {
             try {
+                console.log(canvasRef);
                 if (canvasRef.current) {
                     canvasRef.current.innerHTML = faceApi.createCanvasFromMedia(
                         videoRef.current
                     );
-
-                    faceApi.matchDimensions(canvasRef.current, {
-                        width: videoWidth,
-                        height: videoHeight,
-                    });
 
                     const detections = await faceApi
                         .detectAllFaces(
@@ -47,30 +59,24 @@ export default function useDetections(videoWidth, videoHeight, videoRef, canvasR
                             new faceApi.TinyFaceDetectorOptions()
                         )
                         .withFaceLandmarks()
-                        .withFaceExpressions();
+                        .withFaceDescriptors()
+                        .withFaceExpressions()
+                        .withAgeAndGender();
+                    
+                    console.log(detections);
  
-                    const resizedDetections = faceApi.resizeResults(
-                        detections,
-                        {
-                            width: videoWidth,
-                            height: videoHeight,
-                        }
-                    );
+                    const dims = faceApi.matchDimensions(canvasRef.current, videoRef.current, true);
+
+                    const resizedDetections = faceApi.resizeResults(detections, dims);
  
                     if (canvasRef.current) {
                         canvasRef.current
                             .getContext('2d') // The HTMLCanvasElement.getContext() method returns a drawing context on the canvas, or null if the context identifier is not supported.
-                            .clearRect(0, 0, videoWidth, videoHeight); // The clearRect() method in HTML canvas is used to clear the pixels in a given rectangle.
+                            .clearRect(0, 0, dims.width, dims.height); // The clearRect() method in HTML canvas is used to clear the pixels in a given rectangle.
                         // Draw our detections, face landmarks and expressions.
                         faceApi.draw.drawDetections(canvasRef.current, resizedDetections);
-                        faceApi.draw.drawFaceLandmarks(
-                            canvasRef.current,
-                            resizedDetections
-                        );
-                        faceApi.draw.drawFaceExpressions(
-                            canvasRef.current,
-                            resizedDetections
-                        );
+                        faceApi.draw.drawFaceLandmarks(canvasRef.current, resizedDetections);
+                        faceApi.draw.drawFaceExpressions(canvasRef.current, resizedDetections);
                     }
                 }
             } catch (err) {
@@ -81,6 +87,8 @@ export default function useDetections(videoWidth, videoHeight, videoRef, canvasR
 
     return {
         loadModels,
+        startVideo,
+        stopVideo,
         handleVideoOnPlay
     }
 

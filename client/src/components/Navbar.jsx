@@ -21,7 +21,7 @@ export function Navbar(){
                                 </svg>
                             </button>
                             <a href="/home" className="flex ml-2 hover:text-blue md:mr-24">
-                                <span className="self-center text-white-custon hover:text-blue text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Emotion.ia</span>
+                                <span className="self-center text-white-custon hover:text-blue text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Expretions.ia</span>
                             </a>
                         </div>
                         <div className="flex items-center">
