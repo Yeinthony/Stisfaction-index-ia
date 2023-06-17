@@ -28,5 +28,5 @@ urlpatterns = [
     path('login/', Login.as_view(), name = 'login'),
      path('logout/', Logout.as_view(), name = 'logout'),
     path('usuario/', include('apps.users.api.urls')),
-    path('detection-emotion/', include('apps.emotion_detection.api.routers')),
+    path('detections/', include('apps.emotion_detection.api.routers')),
 ]

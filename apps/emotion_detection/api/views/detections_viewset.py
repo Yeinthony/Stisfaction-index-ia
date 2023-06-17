@@ -1,12 +1,12 @@
 from rest_framework import generics, status, viewsets
 from rest_framework.response import Response
 
-from apps.emotion_detection.models import Emotions
-from apps.emotion_detection.api.serlializer import DetectionsSerializer 
+from apps.emotion_detection.models import Expretions
+from apps.emotion_detection.api.serlializer import ExpretionsSerializer 
 
-class DetectionsViewSet(viewsets.ModelViewSet):
-    serializer_class = DetectionsSerializer
-    queryset = DetectionsSerializer.Meta.model.objects.all()
+class ExpretionsViewSet(viewsets.ModelViewSet):
+    serializer_class = ExpretionsSerializer 
+    queryset = ExpretionsSerializer.Meta.model.objects.all()
 
     def get_queryset(self, pk=None):
         if pk is None:

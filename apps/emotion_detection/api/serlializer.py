@@ -1,9 +1,9 @@
-from apps.emotion_detection.models import Emotions
+from apps.emotion_detection.models import Expretions
 from rest_framework import serializers
 
 
-class DetectionsSerializer(serializers.ModelSerializer):
+class ExpretionsSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model =  Emotions
+        model =  Expretions
         fields = '__all__'

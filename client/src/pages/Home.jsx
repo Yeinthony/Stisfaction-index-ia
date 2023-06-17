@@ -88,8 +88,8 @@ export function Home() {
                         <div className='w-1/2 h-max ml-4 p-4 bg-white-custon-light border border-gray-200 rounded-lg shadow'>
                             <VerticalBar 
                                 title="Edades detectadas" 
-                                labels={["6-11", "12-18", "19-26", "27-59"]} 
-                                dataset={[10, 40, 35, 15]}
+                                labels={["6-11", "12-18", "19-26", "27-59", "60-80"]} 
+                                dataset={[10, 40, 35, 15, 12]}
                             />
                         </div>                      
                     </div>

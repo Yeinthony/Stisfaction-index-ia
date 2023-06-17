@@ -1,8 +1,8 @@
 from rest_framework.routers import DefaultRouter
-from apps.emotion_detection.api.views.detections_viewset import DetectionsViewSet
+from apps.emotion_detection.api.views.detections_viewset import ExpretionsViewSet
 
 router = DefaultRouter()
 
-router.register(r'detections', DetectionsViewSet, basename='products')
+router.register(r'expretions', ExpretionsViewSet, basename='expretions')
 
 urlpatterns = router.urls
