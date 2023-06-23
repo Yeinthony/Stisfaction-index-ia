@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 //Components
 import { Sidebar } from "../../components/Sidebar";
 import { Navbar } from "../../components/Navbar"; 
@@ -8,12 +10,48 @@ import { PieChart } from "../../components/charts/pie/pie";
 //Others
 import { Unfold } from "../../helpers/Unfold"; 
 import { getDaysMonths } from "../../helpers/GetDaysMonths"; 
+import { getExpressionsForDay } from "../../api/expressions.api";
+import { getGendersForDay } from "../../api/genders.api";
+import { getAgesForDay } from "../../api/ages.api";
+import { averagePorcentageExpressions, averagePorcentageGenders, averagePorcentageAges } from "../../helpers/AveragePorcentange";
 
 
 export function StatisticsDays() {
 
+    const [expressions, setExpressions] = useState({});
+    const [genders, setGenders] = useState({});
+    const [ages, setAges] = useState({});
+
     const today = new Date();
     const res = getDaysMonths();
+    const token = sessionStorage.getItem('token');
+    const day = today.getDate();
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
+
+
+    useEffect(() => {
+
+        const expressionsToday = async() =>{
+            const res = await getExpressionsForDay(token, day, month, year);
+            setExpressions(averagePorcentageExpressions(res.data));
+        }
+
+        const gendersToday = async() =>{
+            const res = await getGendersForDay(token, day, month, year);
+            setGenders(averagePorcentageGenders(res.data));
+        }
+
+        const agesToday = async() =>{
+            const res = await getAgesForDay(token, day, month, year);
+            setAges(averagePorcentageAges(res.data));
+        }
+
+        expressionsToday();
+        gendersToday();
+        agesToday();
+
+    }, []);
     
     return (
         <div onClick={Unfold}>
@@ -28,29 +66,65 @@ export function StatisticsDays() {
                     <div className="flex">
 
                         <div className='relative p-6 w-2/4 h-2/4 bg-white-custon-light border border-gray-200 rounded-lg shadow'>
-                            <PieChart 
-                                title="Expresiones detectadas" 
-                                labels={["Enojo", "Disgusto", "Miedo", "Felicidad", "Neutral", "Tristeza", "Sorpresa"]} 
-                                dataset={[0.070, 0.0006, 0.0004, 76.43, 22.84, 0.14, 0.49]}
-                            />
+                            {expressions ?
+                                <PieChart 
+                                    title="Expresiones detectadas" 
+                                    labels={["Enojo", "Disgusto", "Miedo", "Felicidad", "Neutral", "Tristeza", "Sorpresa"]} 
+                                    dataset={[
+                                        expressions.angry, 
+                                        expressions.disgust, 
+                                        expressions.fear, 
+                                        expressions.happy, 
+                                        expressions.neutral, 
+                                        expressions.sad, 
+                                        expressions.surprise
+                                    ]}
+                                 />:
+                                 <PieChart 
+                                    title="Expresiones detectadas" 
+                                    labels={["Enojo", "Disgusto", "Miedo", "Felicidad", "Neutral", "Tristeza", "Sorpresa"]} 
+                                    dataset={[0, 0, 0, 0, 0, 0, 0]}
+                                 />
+                            }
                         </div>
 
                         <div className="w-2/4 h-max ml-4">
 
                             <div className='relative p-6 w-full flex justify-center h-60 bg-white-custon-light border border-gray-200 rounded-lg shadow'>
-                                <HorizontalBar 
-                                    title="Generos detectados" 
-                                    labels={["M", "F"]} 
-                                    dataset={[60, 40]}
-                                />
+                                {genders ?
+                                    <HorizontalBar 
+                                        title="Generos detectados" 
+                                        labels={["M", "F"]} 
+                                        dataset={[genders.male, genders.female]}
+                                    />:
+                                    <HorizontalBar 
+                                        title="Generos detectados" 
+                                        labels={["M", "F"]} 
+                                        dataset={[0, 0]}
+                                    />
+                                }
+                                
                             </div>   
 
                             <div className='relative flex justify-center mt-4 p-6 w-full h-64 bg-white-custon-light border border-gray-200 rounded-lg shadow'>
-                                <VerticalBar 
-                                    title="Edades detectadas" 
-                                    labels={["6-11", "12-18", "19-26", "27-59"]} 
-                                    dataset={[10, 40, 35, 15]}
-                                />
+                                {ages ? 
+                                    <VerticalBar 
+                                        title="Edades detectadas" 
+                                        labels={["6-11", "12-18", "19-26", "27-59", "60-80"]} 
+                                        dataset={[
+                                            ages.six_to_eleven, 
+                                            ages.twelve_to_eighteen, 
+                                            ages.nineteen_to_twentysix, 
+                                            ages.twentyseveven_to_fiftynine,
+                                            ages.sixty_to_eighty
+                                        ]}
+                                    />:
+                                    <VerticalBar 
+                                        title="Edades detectadas" 
+                                        labels={["6-11", "12-18", "19-26", "27-59", "60-80"]} 
+                                        dataset={[0, 0, 0, 0, 0]}
+                                    />
+                                }
                             </div>      
 
                         </div>

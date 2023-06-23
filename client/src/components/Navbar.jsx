@@ -43,9 +43,6 @@ export function Navbar(){
                                     </div>
                                     <ul className="py-1" role="none">
                                         <li>
-                                            <a href="#" className="block px-4 py-2 text-sm text-white-custon  hover:bg-gray-light dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Estadisticas</a>
-                                        </li>
-                                        <li>
                                             <a href="#" className="block px-4 py-2 text-sm text-white-custon  hover:bg-gray-light dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Opciones</a>
                                         </li>
                                         <li>
