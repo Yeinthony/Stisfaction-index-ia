@@ -44,6 +44,7 @@ export default function useUser() {
 
             // set user info
             localStorage.setItem('token', res.data.token);
+            localStorage.setItem('id', res.data.user.id);
             localStorage.setItem('username', res.data.user.username);
             localStorage.setItem('email', res.data.user.email);
             localStorage.setItem('name', res.data.user.name);

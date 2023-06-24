@@ -2,7 +2,7 @@ function roundToTwo(num) {
     return +(Math.round(num + "e+2")  + "e-2");
 }
 
-function averagePorcentage(p1, p2){
+export const averagePorcentage = (p1, p2) =>{
     p1 = parseFloat(p1);
     p2 = parseFloat(p2);
     let mergedPorcentage = ((p1 + p2) / (100 + 100)) * 100;

@@ -43,46 +43,44 @@ export default function useDetections(videoRef, canvasRef){
         });
     }
 
-    const handleVideoOnPlay = () => {
+    const handleVideoOnPlay = async() => {
+        try {
+            if (canvasRef.current) {
+                canvasRef.current.innerHTML = faceApi.createCanvasFromMedia(
+                    videoRef.current
+                );
 
-        setInterval(async () => {
-            try {
-                console.log(canvasRef);
+                const detections = await faceApi
+                    .detectAllFaces(
+                        videoRef.current,
+                        new faceApi.TinyFaceDetectorOptions()
+                    )
+                    .withFaceLandmarks()
+                    .withFaceDescriptors()
+                    .withFaceExpressions()
+                    .withAgeAndGender();
+                
+
+                const dims = faceApi.matchDimensions(canvasRef.current, videoRef.current, true);
+
+                const resizedDetections = faceApi.resizeResults(detections, dims);
+
                 if (canvasRef.current) {
-                    canvasRef.current.innerHTML = faceApi.createCanvasFromMedia(
-                        videoRef.current
-                    );
-
-                    const detections = await faceApi
-                        .detectAllFaces(
-                            videoRef.current,
-                            new faceApi.TinyFaceDetectorOptions()
-                        )
-                        .withFaceLandmarks()
-                        .withFaceDescriptors()
-                        .withFaceExpressions()
-                        .withAgeAndGender();
-                    
-                    console.log(detections);
- 
-                    const dims = faceApi.matchDimensions(canvasRef.current, videoRef.current, true);
-
-                    const resizedDetections = faceApi.resizeResults(detections, dims);
- 
-                    if (canvasRef.current) {
-                        canvasRef.current
-                            .getContext('2d') // The HTMLCanvasElement.getContext() method returns a drawing context on the canvas, or null if the context identifier is not supported.
-                            .clearRect(0, 0, dims.width, dims.height); // The clearRect() method in HTML canvas is used to clear the pixels in a given rectangle.
-                        // Draw our detections, face landmarks and expressions.
-                        faceApi.draw.drawDetections(canvasRef.current, resizedDetections);
-                        faceApi.draw.drawFaceLandmarks(canvasRef.current, resizedDetections);
-                        faceApi.draw.drawFaceExpressions(canvasRef.current, resizedDetections);
-                    }
+                    canvasRef.current
+                        .getContext('2d') // The HTMLCanvasElement.getContext() method returns a drawing context on the canvas, or null if the context identifier is not supported.
+                        .clearRect(0, 0, dims.width, dims.height); // The clearRect() method in HTML canvas is used to clear the pixels in a given rectangle.
+                    // Draw our detections, face landmarks and expressions.
+                    faceApi.draw.drawDetections(canvasRef.current, resizedDetections);
+                    faceApi.draw.drawFaceLandmarks(canvasRef.current, resizedDetections);
+                    faceApi.draw.drawFaceExpressions(canvasRef.current, resizedDetections);
                 }
-            } catch (err) {
-                alert(err);
+                
+                return detections;
             }
-        }, 100);
+
+        } catch (err) {
+            alert(err);
+        }
     };
 
     return {

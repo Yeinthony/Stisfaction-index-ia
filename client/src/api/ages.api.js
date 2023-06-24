@@ -9,7 +9,7 @@ export const getAgesForDay = (token, day, month, year) => userApi.get(
 ).catch((err) => err.response);
 
 export const getAgesForWeek = (token, week, year) => userApi.get(
-    `/?token=${token}&record=2&week=${week}&year${year}`
+    `/?token=${token}&record=2&week=${week}&year=${year}`
 ).catch((err) => err.response);
 
 export const getAgesForMonth = (token, month, year) => userApi.get(

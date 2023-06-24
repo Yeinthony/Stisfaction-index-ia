@@ -9,7 +9,7 @@ export const getExpressionsForDay = (token, day, month, year) => userApi.get(
 ).catch((err) => err.response);
 
 export const getExpressionsForWeek = (token, week, year) => userApi.get(
-    `/?token=${token}&record=2&week=${week}&year${year}`
+    `/?token=${token}&record=2&week=${week}&year=${year}`
 ).catch((err) => err.response);
 
 export const getExpressionsForMonth = (token, month, year) => userApi.get(
