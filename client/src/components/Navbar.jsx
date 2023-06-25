@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import user from "../assets/img/users/usuario.png";
+import logo from "../assets/img/logos/expressionsIA.png";
 import useUser from "../hooks/useUser";
 
 export function Navbar(){
@@ -21,7 +22,8 @@ export function Navbar(){
                                 </svg>
                             </button>
                             <a href="/home" className="flex ml-2 hover:text-blue md:mr-24">
-                                <span className="self-center text-white-custon hover:text-blue text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Expretions.ia</span>
+                                <img className="img-user w-8 h-8" src={logo} alt="logo" id="img-logo"/>
+                                <span className="ml-2 self-center text-white-custon hover:text-blue text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Expressions.ia</span>
                             </a>
                         </div>
                         <div className="flex items-center">

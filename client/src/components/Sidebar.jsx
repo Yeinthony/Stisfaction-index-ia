@@ -1,6 +1,7 @@
 //Dependencies
 import { IoStatsChartSharp, IoSettingsSharp, IoScanSharp, IoLogOutOutline } from "react-icons/io5";
 import { BsFillCalendarDayFill, BsFillCalendarWeekFill, BsFillCalendarMonthFill, BsFillCalendarFill } from "react-icons/bs";
+import { BsFiletypePdf } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 //Others
@@ -32,6 +33,31 @@ export function Sidebar(){
     const dropdownStatistics = () =>{
         const $statisticsOptions = document.getElementById('dropdown-statistics');
         $statisticsOptions.classList.toggle('hidden');
+    }
+
+    const dropdownReports = () =>{
+        const $reportsOptions = document.getElementById('dropdown-reports');
+        $reportsOptions.classList.toggle('hidden');
+    }
+
+    const dropdownReportsDay = () =>{
+        const $reportsDayOptions = document.getElementById('dropdown-reports-day');
+        $reportsDayOptions.classList.toggle('hidden');
+    }
+
+    const dropdownReportsWeek = () =>{
+        const $reportsWeekOptions = document.getElementById('dropdown-reports-week');
+        $reportsWeekOptions.classList.toggle('hidden');
+    }
+
+    const dropdownReportsMonth = () =>{
+        const $reportsMonthOptions = document.getElementById('dropdown-reports-month');
+        $reportsMonthOptions.classList.toggle('hidden');
+    }
+
+    const dropdownReportsYear = () =>{
+        const $reportsYearOptions = document.getElementById('dropdown-reports-year');
+        $reportsYearOptions.classList.toggle('hidden');
     }
 
     return (
@@ -75,6 +101,91 @@ export function Sidebar(){
                                         <BsFillCalendarFill className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                                         <span className="flex-1 ml-3 whitespace-nowrap">Por año</span>
                                     </Link>
+                                </li>
+                            </ul>                                                   
+                        </li>
+                        <li> 
+                            <button type="button" onClick={dropdownReports} className="flex items-center w-full p-2 text-white-custon transition duration-75 rounded-lg group hover:bg-gray dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example">
+                                <BsFiletypePdf className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400  dark:group-hover:text-white" />
+                                <span className="flex-1 ml-3 text-left whitespace-nowrap">Reportes</span>
+                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                            </button>
+                            <ul id="dropdown-reports" className="hidden ml-4 py-2 space-y-2">
+                                <li>
+                                    <button type="button" onClick={dropdownReportsDay} className="flex items-center w-full p-2 text-white-custon transition duration-75 rounded-lg group hover:bg-gray dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example">
+                                        <BsFillCalendarDayFill className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400  dark:group-hover:text-white" />
+                                        <span className="flex-1 ml-3 text-left whitespace-nowrap">Por dia</span>
+                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                                    </button>
+                                    <ul id="dropdown-reports-day" className="hidden ml-8 py-2 space-y-2">
+                                        <li>
+                                            <Link to="/reports-days" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <span className="flex-1 ml-3 whitespace-nowrap">Ver web</span>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/reports-days-showPDF" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <span className="flex-1 ml-3 whitespace-nowrap">Ver PDF</span>
+                                            </Link>
+                                        </li>
+                                    </ul>       
+                                </li>
+                                <li>
+                                    <button type="button" onClick={dropdownReportsWeek} className="flex items-center w-full p-2 text-white-custon transition duration-75 rounded-lg group hover:bg-gray dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example">
+                                        <BsFillCalendarWeekFill className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400  dark:group-hover:text-white" />
+                                        <span className="flex-1 ml-3 text-left whitespace-nowrap">Por semana</span>
+                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                                    </button>
+                                    <ul id="dropdown-reports-week" className="hidden ml-8 py-2 space-y-2">
+                                        <li>
+                                            <Link to="/reports-week" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <span className="flex-1 ml-3 whitespace-nowrap">Ver web</span>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/reports-week-showPDF" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <span className="flex-1 ml-3 whitespace-nowrap">Ver PDF</span>
+                                            </Link>
+                                        </li>
+                                    </ul>       
+                                </li>
+                                <li>
+                                    <button type="button" onClick={dropdownReportsMonth} className="flex items-center w-full p-2 text-white-custon transition duration-75 rounded-lg group hover:bg-gray dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example">
+                                        <BsFillCalendarMonthFill className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400  dark:group-hover:text-white" />
+                                        <span className="flex-1 ml-3 text-left whitespace-nowrap">Por mes</span>
+                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                                    </button>
+                                    <ul id="dropdown-reports-month" className="hidden ml-8 py-2 space-y-2">
+                                        <li>
+                                            <Link to="/reports-month" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <span className="flex-1 ml-3 whitespace-nowrap">Ver web</span>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/reports-month-showPDF" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <span className="flex-1 ml-3 whitespace-nowrap">Ver PDF</span>
+                                            </Link>
+                                        </li>
+                                    </ul>       
+                                </li>
+                                <li>
+                                    <button type="button" onClick={dropdownReportsYear} className="flex items-center w-full p-2 text-white-custon transition duration-75 rounded-lg group hover:bg-gray dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example">
+                                        <BsFillCalendarFill className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400  dark:group-hover:text-white" />
+                                        <span className="flex-1 ml-3 text-left whitespace-nowrap">Por año</span>
+                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                                    </button>
+                                    <ul id="dropdown-reports-year" className="hidden ml-8 py-2 space-y-2">
+                                        <li>
+                                            <Link to="/reports-year" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <span className="flex-1 ml-3 whitespace-nowrap">Ver web</span>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/reports-year-showPDF" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <span className="flex-1 ml-3 whitespace-nowrap">Ver PDF</span>
+                                            </Link>
+                                        </li>
+                                    </ul>       
                                 </li>
                             </ul>                                                   
                         </li>
