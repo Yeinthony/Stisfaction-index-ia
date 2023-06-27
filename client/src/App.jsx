@@ -13,7 +13,12 @@ import { StatisticsMonth } from './pages/statistics/StatisticsMonth';
 import { StatisticsYear } from './pages/statistics/StatisticsYear';
 import { ReportsDays } from './pages/reports/ReportsDays';
 import { ReportsWeek } from './pages/reports/ReportsWeek';
+import { ReportsMonth } from './pages/reports/ReportsMonth';
+import { ReportsYear } from './pages/reports/ReportsYear';
 import { ShowPDFDay } from './pages/reports/showPDF/showPDFDay';
+import { ShowPDFWeek } from './pages/reports/showPDF/showPDFWeek';
+import { ShowPDFMonth } from './pages/reports/showPDF/showPDFMonth';
+import { ShowPDFYear } from './pages/reports/showPDF/showPDFYear';
 
 //Others
 import { UserContextProvider } from './context/userContext';
@@ -42,7 +47,12 @@ const App = () => {
                 {/* Reports */}
                 <Route path="/reports-days" element={<ReportsDays />} />
                 <Route path="/reports-week" element={<ReportsWeek />} />
+                <Route path="/reports-month" element={<ReportsMonth />} />
+                <Route path="/reports-year" element={<ReportsYear />} />
                 <Route path="/reports-days-showPDF" element={<ShowPDFDay />} />
+                <Route path="/reports-week-showPDF" element={<ShowPDFWeek />} />
+                <Route path="/reports-month-showPDF" element={<ShowPDFMonth />} />
+                <Route path="/reports-year-showPDF" element={<ShowPDFYear />} />
 
               </Route>
             </Routes>

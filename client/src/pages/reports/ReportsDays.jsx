@@ -69,7 +69,7 @@ export function ReportsDays() {
                             <span className="pl-4 text-md leading-none tracking-wide uppercase text-gray-dark md:text-lg lg:text-2xl dark:text-white">{name}</span>
                         </div>
                         <div className='relative px-3 pt-2 pb-5 w-2/6 bg-white-custon-dark border border-gray-200 rounded-sm '>
-                            <span className="px-2 text-md leading-none tracking-wide text-gray-dark md:text-lg lg:text-2xl dark:text-white">Fecha:</span>
+                            <span className="px-2 text-md leading-none tracking-wide text-gray-dark md:text-lg lg:text-2xl dark:text-white">FECHA:</span>
                             <span className="pl-4 text-md leading-none tracking-wide uppercase text-gray-dark md:text-lg lg:text-2xl dark:text-white">{`${today.getDate()}/${[today.getMonth()]}/${today.getFullYear()}`}</span>
                         </div>
                     </div>

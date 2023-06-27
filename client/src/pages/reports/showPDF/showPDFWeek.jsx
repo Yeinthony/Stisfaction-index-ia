@@ -1,24 +1,30 @@
 import { useEffect, useState } from "react";
 
 //Dependencies
+import {Document, Image, PDFViewer, Page, Text, View} from "@react-pdf/renderer";
 import { DateTime } from 'luxon';
 
 //Components
-import { Sidebar } from "../../components/Sidebar";
-import { Navbar } from "../../components/Navbar"; 
-import { TablesDetections } from "../../components/TableDetections";
+import { Sidebar } from "../../../components/Sidebar";
+import { Navbar } from "../../../components/Navbar"; 
+import { TablesDetectionsPDF } from "../../../components/TableDetectionsPDF";
+import { SecondarySpinner } from "../../../components/SecondarySpinner";
 
 //Others
-import { Unfold } from "../../helpers/Unfold"; 
-import { getDaysMonths } from "../../helpers/GetDaysMonths";
-import { getExpressionsForWeek } from '../../api/expressions.api';
-import { getGendersForWeek } from '../../api/genders.api';
-import { getAgesForWeek } from '../../api/ages.api';
-import { averagePorcentageExpressions, averagePorcentageGenders, averagePorcentageAges } from "../../helpers/AveragePorcentange";
-import logo from "../../assets/img/logos/expressionsIA2.png";
+import { Unfold } from "../../../helpers/Unfold"; 
+import { getDaysMonths } from "../../../helpers/GetDaysMonths";
+import { getExpressionsForWeek } from '../../../api/expressions.api';
+import { getGendersForWeek } from '../../../api/genders.api';
+import { getAgesForWeek } from '../../../api/ages.api';
+import { 
+    averagePorcentageExpressions, 
+    averagePorcentageGenders, 
+    averagePorcentageAges 
+} from "../../../helpers/AveragePorcentange";
+import logo from "../../../assets/img/logos/expressionsIA2.png";
 
 
-export function ReportsWeek() {
+export function ShowPDFWeek() {
 
     const [expressions, setExpressions] = useState(false);
     const [genders, setGenders] = useState(false);
@@ -219,89 +225,120 @@ export function ReportsWeek() {
     }, []);
     
     return (
+        
         <div onClick={Unfold}>
             <Navbar/>
             <Sidebar/>
-            <div className="p-4 sm:ml-64 bg-white-custon">
-                <div className="mt-24 lg:mx-12 sm:mx-6">
-                    <div className="flex justify-between items-center">
-                        <div>
-                            <span className="block px-4 text-md leading-none tracking-wider text-gray-dark md:text-1xl lg:text-2xl dark:text-white">EXPRESIONS.IA</span>
-                            <span className="px-4 text-3xl font-extrabold tracking-wider leading-none tracking-tight text-gray-dark md:text-5xl lg:text-6xl dark:text-white">REPORTE SEMANAL</span>
-                        </div>
-                        <img className="img-user w-32 h-32" src={logo} alt="user photo" id="img-user"/>
-                    </div>
-                    <div className="flex justify-between px-4 mt-16">
-                        <div className='relative px-3 pt-2 pb-5 lg:w-2/4 md:2/3 bg-white-custon-dark border border-gray-200 rounded-sm'>
-                            <span className="px-2 text-md leading-none tracking-wide text-gray-dark md:text-lg lg:text-2xl dark:text-white">NOMBRE:</span>
-                            <span className="pl-4 text-md leading-none tracking-wide uppercase text-gray-dark md:text-lg lg:text-2xl dark:text-white">{name}</span>
-                        </div>
-                        <div className='relative px-3 pt-2 pb-5 w-2/6 bg-white-custon-dark border border-gray-200 rounded-sm '>
-                            <span className="px-2 text-md leading-none tracking-wide text-gray-dark md:text-lg lg:text-2xl dark:text-white">SEMANA:</span>
-                            <span className="pl-4 text-md leading-none tracking-wide uppercase text-gray-dark md:text-lg lg:text-2xl dark:text-white">{`Nº ${week}`}</span>
-                        </div>
-                    </div>
-                    <div className="px-4 mt-36">
-                        <div className="flex justify-center">
-                            <span className="px-4 text-2xl font-bold tracking-wider leading-none tracking-tight text-gray-dark md:text-3xl lg:text-4xl dark:text-white">DETALLES DE LAS DETECCIONES</span>
-                        </div>
-
-                         {expressions && genders && ages ? 
-                            <>
-                                <TablesDetections 
-                                    day="Lunes" 
-                                    expressions={expressions.monday.expressions}
-                                    genders={genders.monday.genders}
-                                    ages={ages.monday.ages} 
-                                />  
-                                <TablesDetections 
-                                    day="Martes" 
-                                    expressions={expressions.tuesday.expressions}
-                                    genders={genders.tuesday.genders}
-                                    ages={ages.tuesday.ages} 
-                                /> 
-                                <TablesDetections 
-                                    day="Miercoles" 
-                                    expressions={expressions.wednesday.expressions}
-                                    genders={genders.wednesday.genders}
-                                    ages={ages.wednesday.ages} 
-                                /> 
-                                <TablesDetections 
-                                    day="Jueves" 
-                                    expressions={expressions.thursday.expressions}
-                                    genders={genders.thursday.genders}
-                                    ages={ages.thursday.ages} 
-                                /> 
-                                <TablesDetections 
-                                    day="Viernes" 
-                                    expressions={expressions.friday.expressions}
-                                    genders={genders.friday.genders}
-                                    ages={ages.friday.ages} 
-                                /> 
-                                <TablesDetections 
-                                    day="Sabado" 
-                                    expressions={expressions.saturday.expressions}
-                                    genders={genders.saturday.genders}
-                                    ages={ages.saturday.ages} 
-                                /> 
-                                <TablesDetections 
-                                    day="Domingo" 
-                                    expressions={expressions.sunday.expressions}
-                                    genders={genders.sunday.genders}
-                                    ages={ages.sunday.ages} 
-                                /> 
-                            </>
-                            :
-                            <div className="ml-72 my-16">
-                                <span className="px-4 mt-12 text-center mx-auto text-2xl font-bold tracking-wider leading-none tracking-tight text-gray-dark md:text-3xl lg:text-4xl dark:text-white">Cargando...</span>
-                            </div>
-                        }  
-                        
-                    </div>
-
+            {expressions && genders && ages ?
+                <PDFViewer style={{
+                    width:"83%", 
+                    height:"93.6vh", 
+                    marginLeft:"17%",
+                    marginTop:"3rem"
+                }}>
+                    <Document>
+                        <Page size="A4">
+                            <View style={{paddingTop:"75px", paddingLeft:"75px", paddingBottom:"50px", paddingRight:"50px"}}>
+                                <View>
+                                    <View style={{display: "flex"}}>
+                                        <View style={{marginTop:"5px"}}>
+                                            <Text style={{fontSize:"13px"}}>E X P R E S S I O N S  .I A</Text>
+                                            <Text style={{fontSize:"33px", fontWeight:"extrabold", marginTop:"5px"}}>REPORTE SEMANAL</Text>
+                                        </View>
+                                        <Image style={{ width:"70px", position:"absolute", right:"0" }} src={logo} alt="user photo" id="img-user"/>
+                                    </View>
+                                    <View style={{marginTop:"55px", position:"relative"}}>
+                                        <View style={{backgroundColor:"#ededed", padding:"8px", position:"relative", width:"250px"}}>
+                                            <Text style={{width:"90px", fontSize:"13px"}}>NOMBRE:</Text>
+                                            <Text style={{width:"160px", fontSize:"13px", position:"absolute", right:"0", top:"8px", textTransform:"uppercase"}}>{name}</Text>
+                                        </View>
+                                        <View style={{backgroundColor:"#ededed", padding:"8px", position:"absolute", width:"170px", right:"0"}}>
+                                            <Text style={{width:"70px", fontSize:"13px"}}>SEMANA:</Text>
+                                            <Text style={{width:"90px", fontSize:"13px", position:"absolute", right:"0", top:"8px"}}>{`Nº ${week}`}</Text>
+                                        </View>
+                                    </View>
+                                    <View style={{marginTop:"130px"}}>
+                                        <View style={{left:"0", right:"0"}}>
+                                            <Text style={{textAlign:"center", fontSize:"22"}}>DETALLES DE LAS DETECCIONES</Text>
+                                        </View>
+        
+                                        {expressions && genders && ages ? 
+                                            <>
+                                                <View style={{marginTop:"40px", marginBottom:"140px"}}>
+                                                    <TablesDetectionsPDF 
+                                                        day="Lunes" 
+                                                        expressions={expressions.monday.expressions}
+                                                        genders={genders.monday.genders}
+                                                        ages={ages.monday.ages} 
+                                                    /> 
+                                                </View> 
+                                                <View>
+                                                    <TablesDetectionsPDF 
+                                                        day="Martes" 
+                                                        expressions={expressions.tuesday.expressions}
+                                                        genders={genders.tuesday.genders}
+                                                        ages={ages.tuesday.ages} 
+                                                    /> 
+                                                </View>
+                                                <View>
+                                                    <TablesDetectionsPDF 
+                                                        day="Miercoles" 
+                                                        expressions={expressions.wednesday.expressions}
+                                                        genders={genders.wednesday.genders}
+                                                        ages={ages.wednesday.ages} 
+                                                    /> 
+                                                </View>
+                                                <View style={{marginBottom:"25px"}}>
+                                                    <TablesDetectionsPDF 
+                                                        day="Jueves" 
+                                                        expressions={expressions.thursday.expressions}
+                                                        genders={genders.thursday.genders}
+                                                        ages={ages.thursday.ages} 
+                                                    /> 
+                                                </View>
+                                                <View style={{marginTop:"5px"}}>
+                                                    <TablesDetectionsPDF 
+                                                        day="Viernes" 
+                                                        expressions={expressions.friday.expressions}
+                                                        genders={genders.friday.genders}
+                                                        ages={ages.friday.ages} 
+                                                    /> 
+                                                </View>
+                                                <View>
+                                                    <TablesDetectionsPDF 
+                                                        day="Sabado" 
+                                                        expressions={expressions.saturday.expressions}
+                                                        genders={genders.saturday.genders}
+                                                        ages={ages.saturday.ages} 
+                                                    /> 
+                                                </View>
+                                                <View>
+                                                    <TablesDetectionsPDF 
+                                                        day="Domingo" 
+                                                        expressions={expressions.sunday.expressions}
+                                                        genders={genders.sunday.genders}
+                                                        ages={ages.sunday.ages} 
+                                                    />
+                                                </View> 
+                                            </>
+                                            :
+                                            <View>
+                                                <Text>Cargando...</Text>
+                                            </View>
+                                        }  
+                                        
+                                    </View>
+                                </View>     
+                            </View>
+                        </Page>  
+                    </Document>
+                </PDFViewer>
+                : 
+                <div className="sm:ml-64 bg-white-custon">
+                    <SecondarySpinner/>
                 </div>
-                    
-            </div>
+            }
         </div>
+
     )
 }

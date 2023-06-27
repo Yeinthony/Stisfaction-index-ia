@@ -12,6 +12,7 @@ import logo from "../../../assets/img/logos/expressionsIA2.png";
 import { Unfold } from "../../../helpers/Unfold";
 import { Navbar } from "../../../components/Navbar";
 import { Sidebar } from "../../../components/Sidebar";
+import { SecondarySpinner } from "../../../components/SecondarySpinner";
 
 
 export function ShowPDFDay() {
@@ -58,9 +59,9 @@ export function ShowPDFDay() {
             <Sidebar/>
             {expressions && genders && ages ?
                 <PDFViewer style={{
-                    width:"82%", 
-                    height:"92.3vh", 
-                    marginLeft:"18%",
+                    width:"83%", 
+                    height:"93.6vh", 
+                    marginLeft:"17%",
                     marginTop:"3rem"
                 }}>
                     <Document>
@@ -253,7 +254,10 @@ export function ShowPDFDay() {
                         </Page>  
                     </Document>
                 </PDFViewer>
-                : null
+                : 
+                <div className="sm:ml-64 bg-white-custon">
+                    <SecondarySpinner/>
+                </div>
             }
         </div>
 
