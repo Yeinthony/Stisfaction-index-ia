@@ -8,13 +8,10 @@ import { DateTime } from 'luxon';
 import { Sidebar } from "../components/Sidebar";
 import { Navbar } from "../components/Navbar";
 import { Button } from '../components/buttons/Button';
-import { HorizontalBar } from '../components/charts/bars/HorizontalBar';
-import { VerticalBar } from '../components/charts/bars/VerticalBar';
 
 //Others
 import { Unfold } from "../helpers/Unfold";
 import useDetections from '../hooks/useDetections';
-import { PieChart } from '../components/charts/pie/pie';
 import { averagePorcentage } from '../helpers/AveragePorcentange';
 import { createExpressions } from '../api/expressions.api';
 import { createGenders } from '../api/genders.api';
