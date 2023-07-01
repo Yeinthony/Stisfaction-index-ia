@@ -8,11 +8,11 @@ export function SecondaryNavbar (){
   }
 
   return (
-    <div className=''>  
+    <div className='fixed w-full'>  
       <nav className='transparent'>
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link to="/" className="flex items-center text-blue">
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Expretions.ai</span>
+              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Expressions.ai</span>
             </Link>
             <button onClick={onClick} type="button" className="inline-flex items-center p-2 ml-3 text-sm text-white-custon rounded-lg md:hidden hover:bg-gray-dark focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
               <span className="sr-only">Open main menu</span>

@@ -1,6 +1,6 @@
 import { useCallback, useContext, useState } from "react";
 import Context from "../context/userContext";
-import { createUser, loginUser, logoutUser } from "../api/users.api";
+import { createUser, updateUser, loginUser, logoutUser } from "../api/users.api";
 
 export default function useUser() {
     const {token, setToken} = useContext(Context);

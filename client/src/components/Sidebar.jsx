@@ -1,6 +1,6 @@
 //Dependencies
 import { IoStatsChartSharp, IoSettingsSharp, IoScanSharp, IoLogOutOutline } from "react-icons/io5";
-import { BsFillCalendarDayFill, BsFillCalendarWeekFill, BsFillCalendarMonthFill, BsFillCalendarFill } from "react-icons/bs";
+import { BsFillCalendarDayFill, BsFillCalendarWeekFill, BsFillCalendarMonthFill, BsFillCalendarFill, BsFileCode, BsFileEarmarkCode, BsFillFileTextFill } from "react-icons/bs";
 import { BsFiletypePdf } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
@@ -106,7 +106,7 @@ export function Sidebar(){
                         </li>
                         <li> 
                             <button type="button" onClick={dropdownReports} className="flex items-center w-full p-2 text-white-custon transition duration-75 rounded-lg group hover:bg-gray dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example">
-                                <BsFiletypePdf className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400  dark:group-hover:text-white" />
+                                <BsFillFileTextFill className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400  dark:group-hover:text-white" />
                                 <span className="flex-1 ml-3 text-left whitespace-nowrap">Reportes</span>
                                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                             </button>
@@ -120,11 +120,13 @@ export function Sidebar(){
                                     <ul id="dropdown-reports-day" className="hidden ml-8 py-2 space-y-2">
                                         <li>
                                             <Link to="/reports-days" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <BsFileEarmarkCode className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                                                 <span className="flex-1 ml-3 whitespace-nowrap">Ver web</span>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/reports-days-showPDF" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <BsFiletypePdf className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                                                 <span className="flex-1 ml-3 whitespace-nowrap">Ver PDF</span>
                                             </Link>
                                         </li>
@@ -139,11 +141,13 @@ export function Sidebar(){
                                     <ul id="dropdown-reports-week" className="hidden ml-8 py-2 space-y-2">
                                         <li>
                                             <Link to="/reports-week" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <BsFileEarmarkCode className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                                                 <span className="flex-1 ml-3 whitespace-nowrap">Ver web</span>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/reports-week-showPDF" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <BsFiletypePdf className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                                                 <span className="flex-1 ml-3 whitespace-nowrap">Ver PDF</span>
                                             </Link>
                                         </li>
@@ -158,11 +162,13 @@ export function Sidebar(){
                                     <ul id="dropdown-reports-month" className="hidden ml-8 py-2 space-y-2">
                                         <li>
                                             <Link to="/reports-month" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <BsFileEarmarkCode className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                                                 <span className="flex-1 ml-3 whitespace-nowrap">Ver web</span>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/reports-month-showPDF" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <BsFiletypePdf className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                                                 <span className="flex-1 ml-3 whitespace-nowrap">Ver PDF</span>
                                             </Link>
                                         </li>
@@ -177,23 +183,19 @@ export function Sidebar(){
                                     <ul id="dropdown-reports-year" className="hidden ml-8 py-2 space-y-2">
                                         <li>
                                             <Link to="/reports-year" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <BsFileEarmarkCode className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                                                 <span className="flex-1 ml-3 whitespace-nowrap">Ver web</span>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/reports-year-showPDF" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
+                                                <BsFiletypePdf className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                                                 <span className="flex-1 ml-3 whitespace-nowrap">Ver PDF</span>
                                             </Link>
                                         </li>
                                     </ul>       
                                 </li>
                             </ul>                                                   
-                        </li>
-                        <li>
-                            <a href="#" className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">
-                                <IoSettingsSharp className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-                                <span className="flex-1 ml-3 whitespace-nowrap">opciones</span>
-                            </a>
                         </li>
                         <li className="botton-0">
                             <Link onClick={logout} className="flex items-center p-2 text-white-custon rounded-lg dark:text-white hover:bg-gray dark:hover:bg-gray-700">

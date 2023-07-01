@@ -69,7 +69,7 @@ export function Register() {
                 <>
                     {registred ? <Toast/>: ""}
                     <SecondaryNavbar/>
-                    <div className="w-8/12 mx-auto mt-12 mb-24 p-6 bg-gray border border-gray-light2 rounded-xl shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <div className="w-8/12 mx-auto mt-32 mb-24 p-6 bg-gray border border-gray-light2 rounded-xl shadow-md dark:bg-gray-800 dark:border-gray-700">
                         <h1 className="mb-12 text-center text-2xl font-extrabold text-white-custon dark:text-white md:text-3xl lg:text-4xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-green-light from-blue">Registrase</span></h1>
                         <form onSubmit={onSubmit}>
                             <div className="grid gap-6 md:grid-cols-2">

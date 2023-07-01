@@ -29,7 +29,7 @@ export function Navbar(){
                         <div className="flex items-center">
                             <div className="flex items-center ml-3">
                                 <div >
-                                    <button type="button" id="dropdownUserButton" className="bg-gray flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
+                                    <button type="button" id="dropdownUserButton" className="bg-gray flex text-sm bg-gray-800 rounded-full">
                                         <span className="sr-only">Open user menu</span>
                                         <img className="img-user w-8 h-8 rounded-full" src={user} alt="user photo" id="img-user"/>
                                     </button>
@@ -45,7 +45,7 @@ export function Navbar(){
                                     </div>
                                     <ul className="py-1" role="none">
                                         <li>
-                                            <a href="#" className="block px-4 py-2 text-sm text-white-custon  hover:bg-gray-light dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Opciones</a>
+                                            <Link to="/home" className="block px-4 py-2 text-sm text-white-custon  hover:bg-gray-light dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Detectar</Link>
                                         </li>
                                         <li>
                                             <Link onClick={logout} className="block px-4 py-2 text-sm text-white-custon hover:bg-gray-light dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Cerrar sesión</Link>
