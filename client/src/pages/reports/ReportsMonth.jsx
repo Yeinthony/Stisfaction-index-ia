@@ -25,6 +25,7 @@ export function ReportsMonth() {
     const [ages, setAges] = useState(false);
 
     const name = `${localStorage.getItem('name')} ${localStorage.getItem('last_name')}`;
+    const organization = localStorage.getItem('organization');
     const today = new Date();
     const token = sessionStorage.getItem('token');
     const res = getDaysMonths();
@@ -127,16 +128,22 @@ export function ReportsMonth() {
                         </div>
                         <img className="img-user w-32 h-32" src={logo} alt="user photo" id="img-user"/>
                     </div>
-                    <div className="flex justify-between px-4 mt-16">
+                    <div className="lg:flex block lg:justify-between px-4 mt-16">
                         <div className='relative px-3 pt-2 pb-5 lg:w-2/4 md:2/3 bg-white-custon-dark border border-gray-200 rounded-sm'>
                             <span className="px-2 text-md leading-none tracking-wide text-gray-dark md:text-lg lg:text-2xl dark:text-white">NOMBRE:</span>
                             <span className="pl-4 text-md leading-none tracking-wide uppercase text-gray-dark md:text-lg lg:text-2xl dark:text-white">{name}</span>
                         </div>
-                        <div className='relative px-3 pt-2 pb-5 w-2/6 bg-white-custon-dark border border-gray-200 rounded-sm '>
+                        <div className='w-auto relative px-3 pt-2 pb-5 w-2/6 bg-white-custon-dark border border-gray-200 rounded-sm mt-8 lg:mt-0'>
                             <span className="px-2 text-md leading-none tracking-wide text-gray-dark md:text-lg lg:text-2xl dark:text-white">FECHA:</span>
                             <span className="pl-4 text-md leading-none tracking-wide uppercase text-gray-dark md:text-lg lg:text-2xl dark:text-white">{`${res.months[month]} de ${year}`}</span>
                         </div>
                     </div>
+
+                    <div className='relative px-3 mx-4 mt-8 pt-2 pb-5 lg:w-2/4 md:2/3 bg-white-custon-dark border border-gray-200 rounded-sm'>
+                        <span className="px-2 text-md leading-none tracking-wide text-gray-dark md:text-lg lg:text-2xl dark:text-white">ORGANIZACIÓN:</span>
+                        <span className="pl-4 text-md leading-none tracking-wide uppercase text-gray-dark md:text-lg lg:text-2xl dark:text-white">{organization}</span>
+                    </div>
+
                     <div className="px-4 mt-36">
                         <div className="flex justify-center">
                             <span className="px-4 text-2xl font-bold tracking-wider leading-none tracking-tight text-gray-dark md:text-3xl lg:text-4xl dark:text-white">DETALLES DE LAS DETECCIONES</span>
@@ -344,7 +351,7 @@ export function ReportsMonth() {
                                 }
                             </>
                             :
-                            <div className="ml-72 my-16">
+                            <div className="lg:ml-72 ml-14 my-12">
                                 <span className="px-4 mt-12 text-center mx-auto text-2xl font-bold tracking-wider leading-none tracking-tight text-gray-dark md:text-3xl lg:text-4xl dark:text-white">Cargando...</span>
                             </div>
                         }  

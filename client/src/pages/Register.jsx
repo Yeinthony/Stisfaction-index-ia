@@ -25,6 +25,7 @@ const userSchema = yup.object({
     last_name: yup.string().required("Este campo es requerido"),
     username: yup.string().required("Este campo es requerido"),// Falta verificar que el nombre de usuario no este registrado
     email: yup.string().email("Ingrese un email valido").required("Este campo es requerido"),// Falta verificar que el email no este registrado y enviar codigo de confirmacion para activar la cuenta
+    organization: yup.string().required("Este campo es requerido"),
     password: yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){6,15}$/, "La contraseña debe tener entre 6 y 15 caracteres, al menos una letra minuscula, al menos una letra mayuscula, al menos un digito y al menos un caracter especial.").required("Este campo es requerido"),//Falta verificar que las contraseñas coincidan
     confirm_password: yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){6,15}$/, "La contraseña debe tener entre 6 y 15 caracteres, al menos una letra minuscula, al menos una letra mayuscula, al menos un digito y al menos un caracter especial.").required("Este campo es requerido")//Falta verificar que las contraseñas coincidan
 
@@ -69,7 +70,7 @@ export function Register() {
                 <>
                     {registred ? <Toast/>: ""}
                     <SecondaryNavbar/>
-                    <div className="w-8/12 mx-auto mt-32 mb-24 p-6 bg-gray border border-gray-light2 rounded-xl shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <div className="lg:w-8/12 w-10/12 mx-auto mt-32 mb-24 p-6 bg-gray border border-gray-light2 rounded-xl shadow-md dark:bg-gray-800 dark:border-gray-700">
                         <h1 className="mb-12 text-center text-2xl font-extrabold text-white-custon dark:text-white md:text-3xl lg:text-4xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-green-light from-blue">Registrase</span></h1>
                         <form onSubmit={onSubmit}>
                             <div className="grid gap-6 md:grid-cols-2">
@@ -78,7 +79,7 @@ export function Register() {
                                 <Input type={"text"} placeholder={"Wick"} name={"last_name"} nameLabel={"Apellido"} register={register("last_name") } errors={errors.last_name}/>
                             </div>
 
-                            <SpanInput type={"text"} placeholder={"Hombre del saco"} name={"username"} nameLabel={"Username"} spanIcon={"@"} register={register("username")} errors={errors}/>
+                            <SpanInput type={"text"} placeholder={"Jhon21"} name={"username"} nameLabel={"Username"} spanIcon={"@"} register={register("username")} errors={errors}/>
                             {hasError.err? 
                                 <div className="mb-6">
                                     <span className="text-red-500">{hasError.message.username[0]}</span>
@@ -88,6 +89,12 @@ export function Register() {
                             {hasError.err? 
                                 <div className="mb-6">
                                     <span className="text-red-500">{hasError.message.email[0]}</span>
+                                </div>: ""}
+
+                            <Input type={"text"} placeholder={"expressions.ai C.A"} name={"organization"} nameLabel={"Organización"} register={register("organization")} errors={errors.organization}/>
+                            {hasError.err? 
+                                <div className="mb-6">
+                                    <span className="text-red-500">{hasError.message.organization[0]}</span>
                                 </div>: ""}
 
                             <Input type={"password"} placeholder={"•••••••••"} name={"password"} nameLabel={"Contraseña"} register={register("password")} errors={errors.password}/>

@@ -4,7 +4,7 @@ export function TablesDetections({expressions, genders, ages, day}){
             <div className="flex justify-start">
                 <span className="px-4 text-2xl font-bold tracking-wider leading-none tracking-tight text-gray-dark md:text-3xl lg:text-4xl dark:text-white">{day}</span>
             </div>
-            <div className="lg:flex lg:justify-between mt-4 lg:mr-0 md:block mr-24">
+            <div className="lg:flex lg:justify-between mt-4 lg:mr-0 md:block mr-72">
 
                 <div className="w-4/12 lg:mr-10 mx-auto relative border border-gray-200 rounded-md">
                     <table className="bg-blue-dark text-lg text-left text-gray-500 dark:text-gray-400">

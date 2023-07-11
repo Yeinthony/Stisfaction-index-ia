@@ -32,9 +32,9 @@ export function StatisticsMonth() {
     
     const daysInTheMonth = [];
 
-    const daysMonth = DateTime.local(today.getFullYear(), today.getMonth()).daysInMonth;
+    const daysMonth = DateTime.local(today.getFullYear(), today.getMonth()+1).daysInMonth;
 
-    for (let i = 1; i < daysMonth; i++) { daysInTheMonth.push(i) }
+    for (let i = 1; i < daysMonth+1; i++) { daysInTheMonth.push(i) }
 
     useEffect(() => {
 

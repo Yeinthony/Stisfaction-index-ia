@@ -2,6 +2,7 @@ import {useEffect, useRef, useState} from 'react';
 
 //Dependencies
 import { IoPauseCircleOutline, IoCaretForwardCircleOutline } from 'react-icons/io5';
+import { FaViadeo, FaVideo } from 'react-icons/fa';
 import { DateTime } from 'luxon';
 
 //Components
@@ -274,7 +275,7 @@ export function Home() {
                 <div className="p-4 rounded-lg dark:border-gray-700 mt-12">
                    <div className="flex justify-center h-screen">
                         {loadModel ? 
-                            <div className='flex relative overflow-hidden w-8/12 h-5/6 bg-white-custon-light border border-gray-200 rounded-lg shadow'>
+                            <div className='flex relative overflow-hidden lg:w-8/12 h-5/6 sm:w-10/12 bg-white-custon-light border border-gray-200 rounded-lg shadow'>
                                 <video
                                     className='absolute z-10 w-full'
                                     ref={videoRef}
@@ -283,12 +284,24 @@ export function Home() {
                                     onPlay={onPlay}
                                 />
                                 <canvas className='relative z-20 w-full' ref={canvasRef}/>
-                                <div className='absolute z-30 top-1 right-1'>
+
                                     {play ? 
-                                        <Button name={<IoPauseCircleOutline/>} handlePlay={finishDetections} />:
-                                        <Button name={<IoCaretForwardCircleOutline/>} handlePlay={startDetections} />
+                                        <div className='absolute z-30 top-1 right-1'>
+                                            <Button name={<IoPauseCircleOutline/>} handlePlay={finishDetections} />
+                                        </div>
+                                        :
+                                        <div className='z-30'>
+                                            <div className='absolute top-1 right-1'>
+                                                <Button name={<IoCaretForwardCircleOutline/>} handlePlay={startDetections} />
+                                            </div>
+                                            <div className='pl-8 lg:pl-16 absolute top-med left-med'>
+                                                <span className='video-icon text-gray-dark'>
+                                                    <FaVideo/>
+                                                </span>
+                                            </div>  
+                                        </div>
                                     }
-                                </div>                           
+                        
                             </div> : 
                             <div className='my-auto text-center'>
                                 <svg aria-hidden="true" className="inline w-16 h-16 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

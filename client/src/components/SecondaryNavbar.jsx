@@ -8,7 +8,7 @@ export function SecondaryNavbar (){
   }
 
   return (
-    <div className='fixed w-full'>  
+    <div className='fixed w-full top-0'>  
       <nav className='transparent'>
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link to="/" className="flex items-center text-blue">

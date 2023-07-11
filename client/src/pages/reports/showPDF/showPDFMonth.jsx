@@ -31,6 +31,7 @@ export function ShowPDFMonth() {
     const [ages, setAges] = useState(false);
 
     const name = `${localStorage.getItem('name')} ${localStorage.getItem('last_name')}`;
+    const organization = localStorage.getItem('organization');
     const today = new Date();
     const token = sessionStorage.getItem('token');
     const res = getDaysMonths();
@@ -126,12 +127,7 @@ export function ShowPDFMonth() {
             <Navbar/>
             <Sidebar/>
             {expressions && genders && ages ?
-                <PDFViewer style={{
-                    width:"83%", 
-                    height:"93.6vh", 
-                    marginLeft:"17%",
-                    marginTop:"3rem"
-                }}>
+                <PDFViewer className="showPDF">
                     <Document>
                         <Page size="A4">
                             <View style={{paddingTop:"75px", paddingLeft:"75px", paddingBottom:"50px", paddingRight:"50px"}}>
@@ -152,6 +148,10 @@ export function ShowPDFMonth() {
                                             <Text style={{width:"70px", fontSize:"13px"}}>FECHA:</Text>
                                             <Text style={{width:"110px", fontSize:"13px", textTransform:"uppercase", position:"absolute", right:"0", top:"8px"}}>{`${res.months[month]} de ${year}`}</Text>
                                         </View>
+                                    </View>
+                                    <View style={{backgroundColor:"#ededed", padding:"8px", marginTop:"20px", position:"relative", width:"350px"}}>
+                                        <Text style={{width:"130px", fontSize:"13px"}}>ORGANIZACION:</Text>
+                                        <Text style={{width:"220px", fontSize:"13px", position:"absolute", right:"0", top:"8px", textTransform:"uppercase"}}>{organization}</Text>
                                     </View>
                                     <View style={{marginTop:"130px"}}>
                                         <View style={{left:"0", right:"0"}}>

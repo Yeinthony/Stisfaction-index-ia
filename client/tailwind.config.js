@@ -19,7 +19,11 @@ export default {
       'gray-light': '#283447',
       'gray-light2': '#76859D'
     },
-    extend: {},
+    extend: {
+      spacing:{
+        'med': '18%'
+      }
+    },
   },
   plugins: [
     
