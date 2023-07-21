@@ -10,9 +10,6 @@ Expressions.ai es una aplicación web que buscan mejorar la experiencia de compr
 * [Telegram](https://t.me/Yeinthony)
 * [Discord](https://discordapp.com/users/796375277211090945)
 
-## Ver ejemplo en vivo 
-- [https://anaplou.github.io/blackiebooks-rebranding/]()
-
 ## Instalación 
 Para la ejecución del proyecto en local es necesario tener instalado python 3.11.3 y node 18.16.0 en delante
 
