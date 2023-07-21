@@ -16,12 +16,9 @@ Expressions.ai es una aplicación web que buscan mejorar la experiencia de compr
 ## Instalación 
 Para la ejecución del proyecto en local es necesario tener instalado python 3.11.3 y node 18.16.0
 
-1. Para instalar las dependecias de python ejecute en la terminal
-     pip install -r requirements.txt
-2. Cambie a la carpeta client ejecutando en la terminal
-     cd client
-3. Para instalar las dependencias de node ejecute en la terminal 
-     npm install
+1. Para instalar las dependecias de python ejecute en la terminal: pip install -r requirements.txt
+2. Cambie a la carpeta client ejecutando en la terminal: cd client
+3. Para instalar las dependencias de node ejecute en la terminal: npm install
   
 ## Contratación
 Si quieres contratarme puedes escribirme a yeinthonyvargas@gmail.com para consultas.
